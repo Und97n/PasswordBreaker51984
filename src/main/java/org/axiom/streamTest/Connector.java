@@ -29,22 +29,20 @@ public class Connector {
             HttpResponse response = httpClient.execute(httpGet);
             HttpEntity entity = response.getEntity();
 
-            System.out.println(response.getStatusLine());
-            if (entity != null) {
-                System.out.println("Response content length: " + entity.getContentLength());
+            if(response.getStatusLine().getStatusCode() != 401) {
+                System.out.println("Password found!");
+                System.out.println("Pass: " + password);
+                break;
             }
-            if (entity != null) {
-                entity.consumeContent();
-            }
-
+            httpClient.getConnectionManager().shutdown();
         }
 
-
+        System.out.println("Password not found((");
 
         // When HttpClient instance is no longer needed,
         // shut down the connection manager to ensure
         // immediate deallocation of all system resources
-        httpClient.getConnectionManager().shutdown();
+        //  httpClient.getConnectionManager().shutdown();
 
         return null;
 
