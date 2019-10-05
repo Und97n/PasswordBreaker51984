@@ -19,7 +19,7 @@ public class PassGenerator implements Supplier<String> {
     @Override
     public String get() {
         this.previousString = nextString(previousString);
-        return "1234";
+        return previousString;
     }
 
 
