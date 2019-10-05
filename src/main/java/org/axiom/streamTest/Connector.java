@@ -34,7 +34,8 @@ public class Connector {
                 System.out.println("Pass: " + password);
                 break;
             }
-            httpClient.getConnectionManager().shutdown();
+
+            entity.consumeContent();
         }
 
         System.out.println("Password not found((");
@@ -42,7 +43,7 @@ public class Connector {
         // When HttpClient instance is no longer needed,
         // shut down the connection manager to ensure
         // immediate deallocation of all system resources
-        //  httpClient.getConnectionManager().shutdown();
+        httpClient.getConnectionManager().shutdown();
 
         return null;
 
