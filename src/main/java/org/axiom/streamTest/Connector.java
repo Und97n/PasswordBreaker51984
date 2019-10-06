@@ -47,7 +47,7 @@ public class Connector {
             HttpGet httpGet = new HttpGet(fullURL);
             HttpResponse response = httpClient.execute(httpGet);
             HttpEntity entity = response.getEntity();
-
+System.out.println(password);
             if(response.getStatusLine().getStatusCode() != 401) {
                 System.out.println("Password found!");
                 System.out.println("Pass: " + password);
