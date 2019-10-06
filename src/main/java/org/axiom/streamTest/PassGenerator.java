@@ -1,6 +1,5 @@
 package org.axiom.streamTest;
 
-
 import java.util.*;
 import java.util.function.Supplier;
 
