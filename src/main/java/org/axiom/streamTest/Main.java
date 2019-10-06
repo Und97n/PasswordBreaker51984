@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Main {
     private static String alphabet = "1234";
-    private static int maxPasslLen = 5;
+    private static int maxPasslLen = 6;
     private static String username = "users";
     private static String url = "http://localhost/A/";
     private static int port = 80;
