@@ -16,9 +16,11 @@ public class PassGenerator implements Supplier<String> {
 
     public PassGenerator(String alphabet, int minLen) {
         this.alphabet = alphabet.toCharArray();
-        char[] temp = new char[minLen];
-        Arrays.fill(temp, alphabet.charAt(0));
-        this.previousString = Arrays.toString(temp);
+        StringBuilder temp = new StringBuilder();
+        for(int i=0 ; i<minLen ; ++i)
+            temp.append(alphabet.charAt(0));
+
+        this.previousString = temp.toString();
 
     }
 
