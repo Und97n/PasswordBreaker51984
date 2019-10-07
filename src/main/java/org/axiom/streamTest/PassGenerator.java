@@ -21,17 +21,18 @@ public class PassGenerator implements Supplier<String> {
             temp.append(alphabet.charAt(0));
 
         this.previousString = temp.toString();
-
     }
 
 
     @Override
     public String get() {
+        String temp = previousString;
         this.previousString = nextString(previousString);
-        return previousString;
+        return temp;
     }
 
 
+    @Deprecated
     public List<String> getTestList(int maxLen) {
         List<String> list = new LinkedList<>();
 
